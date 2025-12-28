@@ -1,6 +1,4 @@
-import { Profile, Project, Experience } from "./types";
-// ... imports
-import { SkillCategory } from "@/lib/types";
+import { Profile, Project, Experience, SkillCategory } from "./types";
 
 export const SKILLS_CATEGORIES: SkillCategory[] = [
     {
@@ -44,11 +42,11 @@ export const SKILLS_CATEGORIES: SkillCategory[] = [
         icon: "scrum",
         groups: [
             {
-                name: "Methodologies", // Setara dengan 'Framework' di teknis
+                name: "Methodologies",
                 items: ["Scrum Framework", "Agile Development", "Sprint Planning", "TDD"]
             },
             {
-                name: "Tools", // Setara dengan 'Libraries/Tools'
+                name: "Tools",
                 items: ["Jira Software", "Git & GitHub", "Figma (Dev Mode)", "Postman", "VS Code"]
             }
         ]
@@ -56,7 +54,7 @@ export const SKILLS_CATEGORIES: SkillCategory[] = [
 ];
 
 export const PROFILE_DATA: Profile = {
-    name: "Marshall Syawal", // Ganti dengan nama asli jika beda
+    name: "Marshall Syawal",
     avatar: "/profile.png",
     role: "Software Engineer",
     headline: "Engineering robust IoT and scalable mobile / web based platforms.",
@@ -85,7 +83,7 @@ export const PROFILE_DATA: Profile = {
     ],
 };
 
-export const EXPERIENCE_DATA = [
+export const EXPERIENCE_DATA: Experience[] = [
     {
         company: "Artium Multikarya Indonesia",
         role: "Software Engineer",
@@ -108,14 +106,17 @@ export const EXPERIENCE_DATA = [
     }
 ];
 
-// src/lib/data.ts
-
-export const PROJECTS_DATA = [
+// DATA PROJECT YANG SUDAH DIPERBAIKI (LENGKAP)
+export const PROJECTS_DATA: Project[] = [
     {
         title: "HVAS Mobile Controller",
         slug: "hvas-controller",
         year: "2024",
-        description: "An industrial-grade mobile interface for High Volume Air Samplers. Engineered a resilience-focused background service architecture to guarantee uninterrupted 24-hour sampling sessions via Bluetooth Low Energy (BLE), ensuring critical data integrity.",
+        description: "An industrial-grade mobile interface for High Volume Air Samplers.",
+        // DATA BARU DITAMBAHKAN:
+        fullDescription: "An industrial-grade mobile interface for High Volume Air Samplers. Engineered a resilience-focused background service architecture to guarantee uninterrupted 24-hour sampling sessions via Bluetooth Low Energy (BLE), ensuring critical data integrity.",
+        challenge: "Maintaining a stable BLE connection for 24 hours continuously in an industrial environment with high interference potential, while ensuring data is never lost even if the UI is closed.",
+        solution: "Implemented a Foreground Service with Wake Locks to prevent OS process killing. Designed a local buffering system (Queue) using SQLite to store data temporarily when BLE disconnects, and auto-sync when reconnected.",
         techStack: ["Flutter", "Flutter Blue Plus", "Background Service", "SQLite", "Real-time Chart"],
         repoUrl: "#",
         features: [
@@ -129,7 +130,10 @@ export const PROJECTS_DATA = [
         title: "Artium Connect",
         slug: "artium-connect",
         year: "2024",
-        description: "A specialized diagnostic tool designed to validate connectivity and data transmission between Air Quality Monitoring Systems (AQMS) and the Ministry of Environment (KLHK) servers. Ensures compliance with ISPU standards.",
+        description: "Diagnostic tool for AQMS connectivity validation.",
+        fullDescription: "A specialized diagnostic tool designed to validate connectivity and data transmission between Air Quality Monitoring Systems (AQMS) and the Ministry of Environment (KLHK) servers. Ensures compliance with ISPU standards.",
+        challenge: "Debugging complex communication protocols between proprietary hardware and government servers with strict data formatting requirements (ISPU Standards).",
+        solution: "Built a hybrid communication engine that supports both MQTT for real-time telemetry and REST API for validation logs, complete with a visual packet inspector.",
         techStack: ["Flutter", "REST API", "MQTT", "Data Visualization", "Provider"],
         repoUrl: "#",
         features: [
@@ -143,7 +147,10 @@ export const PROJECTS_DATA = [
         title: "Procurement Platform",
         slug: "procurement-web",
         year: "2023",
-        description: "A centralized web platform streamlining the corporate procurement lifecycle. Designed with a modular architecture to facilitate the future transition into a full-fledged Enterprise Resource Planning (ERP) system.",
+        description: "Centralized corporate procurement platform.",
+        fullDescription: "A centralized web platform streamlining the corporate procurement lifecycle. Designed with a modular architecture to facilitate the future transition into a full-fledged Enterprise Resource Planning (ERP) system.",
+        challenge: "Migrating manual, paper-based procurement workflows into a digital system without disrupting existing operational procedures and approval hierarchies.",
+        solution: "Designed a flexible Role-Based Access Control (RBAC) system and a dynamic state-machine workflow engine to handle multi-level approvals.",
         techStack: ["Laravel", "PHP", "MySQL", "Bootstrap", "MVC Architecture"],
         repoUrl: "#",
         features: [
@@ -157,9 +164,12 @@ export const PROJECTS_DATA = [
         title: "Personal Portfolio",
         slug: "portfolio-v1",
         year: "2025",
-        description: "A high-performance personal branding platform built with modern web technologies. Features physics-based scroll animations, component-driven architecture, and a clean, industrial aesthetic.",
+        description: "High-performance personal branding platform.",
+        fullDescription: "A high-performance personal branding platform built with modern web technologies. Features physics-based scroll animations, component-driven architecture, and a clean, industrial aesthetic.",
+        challenge: "Creating a unique, motion-rich experience that remains performant on mobile devices and achieves a perfect 100 Lighthouse score.",
+        solution: "Utilized Next.js App Router for server-side rendering, Framer Motion for GPU-accelerated animations, and Tailwind CSS for minimal bundle size.",
         techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
-        repoUrl: "https://github.com/username/repo",
+        repoUrl: "https://github.com/marshalldsywl/portfolio",
         features: [
             "Physics-based Horizontal Scroll Animations",
             "Component-Driven UI Architecture",
@@ -171,7 +181,10 @@ export const PROJECTS_DATA = [
         title: "Internal Task Manager",
         slug: "task-manager-app",
         year: "2023",
-        description: "A collaborative mobile tool designed to enhance internal R&D team productivity. Features agile board visualization, sprint tracking, and role-based task assignments.",
+        description: "Collaborative R&D team productivity tool.",
+        fullDescription: "A collaborative mobile tool designed to enhance internal R&D team productivity. Features agile board visualization, sprint tracking, and role-based task assignments.",
+        challenge: "Synchronizing task states in real-time across multiple team members' devices with minimal latency.",
+        solution: "Leveraged Firebase Realtime Database with offline support and optimistic UI updates to ensure instant feedback for users.",
         techStack: ["Flutter", "Firebase", "State Management", "Local Notifications"],
         repoUrl: "#",
         features: [
@@ -185,7 +198,10 @@ export const PROJECTS_DATA = [
         title: "Money Record",
         slug: "money-record",
         year: "2022",
-        description: "A user-centric financial management application focused on privacy and speed. Implements a local-first storage architecture (Offline) with interactive expense analytics and reporting.",
+        description: "Privacy-focused financial management app.",
+        fullDescription: "A user-centric financial management application focused on privacy and speed. Implements a local-first storage architecture (Offline) with interactive expense analytics and reporting.",
+        challenge: "Providing complex financial analytics on-device without compromising app startup time or scrolling performance.",
+        solution: "Implemented Hive (NoSQL) for ultra-fast read/write operations and calculated heavy analytics in background isolates.",
         techStack: ["Flutter", "Hive DB", "FL Chart", "Clean Code"],
         repoUrl: "#",
         features: [

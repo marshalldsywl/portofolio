@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-    const BASE_URL = 'https://marshall.dev'; // GANTI dengan domain asli nanti
+    const BASE_URL = 'https://portofolio-8li6.vercel.app/'; // GANTI dengan domain asli nanti
 
     return {
         rules: {

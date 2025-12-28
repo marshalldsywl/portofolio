@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { PROJECTS_DATA } from '@/lib/data';
 
 // GANTI dengan domain asli Anda nanti saat deploy
-const BASE_URL = 'https://marshall.dev';
+const BASE_URL = 'https://portofolio-8li6.vercel.app/';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
